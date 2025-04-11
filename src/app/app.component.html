@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-light">
   <div class="container-fluid">
-    <a class="navbar-brand" href="#"><img src="assets/images/LogoCibando2023.png" class="logo"/> Cibando2023</a>
+    <a class="navbar-brand" href="#">Cibando2023</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -19,28 +19,30 @@
     </div>
   </div>
 </nav>
-
-<div id="carouselExampleIndicators" class="carousel slide">
-  <div class="carousel-indicators">
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
-    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
-  </div>
-  <div class="carousel-inner">
+@if (images) {
+	<ngb-carousel >
     @for (image of images; track $index) {
-    <div class="carousel-item active">
-      <img [src]="percorsoFoto+image.Id+'.png'" class="d-block w-100" alt="...">
-    </div>
+		<ng-template ngbSlide>
+			<div class="picsum-img-wrapper">
+				<img [src]="percorsoFoto+image.Id+'.png'" alt="Random first slide" />
+			</div>
+			<div class="carousel-caption">
+				<h3>{{image.Titolo}}</h3>
+			</div>
+		</ng-template>
   }
-  </div>
-  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Previous</span>
-  </button>
-  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="visually-hidden">Next</span>
-  </button>
+	</ngb-carousel>
+}
+@else {
+  <p>Non ci sono immagini</p>
+}
+<div>
+  <h2>
+    Benvenuti su Cibando
+  </h2>
+  <p class="paragrafo">
+    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur repudiandae distinctio atque consequatur sapiente voluptatibus, dicta dolores velit blanditiis nemo ab natus et sed error facilis illo voluptatem, inventore dolorem.
+  </p>
 </div>
 
 <router-outlet />

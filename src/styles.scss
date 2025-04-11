@@ -3,7 +3,7 @@
 @import "primeicons/primeicons.css";
 
 body {
-  padding: 15px!important;
+  //padding: 15px!important;
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -11,6 +11,29 @@ body {
   margin-right: 15px;
 }
 
+/* NAVBAR */
+nav {
+  padding-left: 10px!important;
+}
 
+.bg-light {
+  background-color: #8e210b!important;
+}
+
+h2 {
+  font-family: "Montserrat", cursive;
+  font-size: 40px;
+  text-shadow: black 2px, 3px, 3px;
+}
+
+h3 {
+  font-family: "Homemade Apple", cursive;
+  font-size: 40px;
+  text-shadow: black 2px, 3px, 3px;
+}
+
+.carousel-caption {
+  color: black!important;
+}
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
