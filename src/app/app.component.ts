@@ -1,34 +1,25 @@
-
+import { NgClass, NgStyle } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { NgbCarouselModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms'; // Usato per il two way binding nei form
+
+import { FormsModule } from '@angular/forms';
+import { CarouselComponent } from "./shared/carousel/carousel.component";
+import { NavbarComponent } from "./shared/navbar/navbar.component"; // Usato per il two way binding nei form
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NgbCarouselModule, FormsModule],
+  imports: [RouterOutlet, FormsModule, CarouselComponent, NgClass, NgStyle, NavbarComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
   title = 'Cibando2023';
 
-  images = [
-    {
-      Id: 1,
-      Titolo: 'Spaghetti al sugo'
-    },
-    {
-      Id: 2,
-      Titolo: 'Tagliata di manzo'
-    },
-    {
-      Id: 3,
-      Titolo: 'Tiramisù'
-    }
-  ];
+  evidenziato = false;
+  evidenziaTesto() {
+    this.evidenziato = !this.evidenziato;
+  }
 
-  percorsoFoto = 'assets/images/';
 
 
   coloreScelto = 'green';

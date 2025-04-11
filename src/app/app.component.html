@@ -1,46 +1,10 @@
-<nav class="navbar navbar-expand-lg bg-light">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#">Cibando2023</a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNav">
-      <ul class="navbar-nav">
-        <li class="nav-item">
-          <a class="nav-link active" aria-current="page" href="#">Home</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Ricette</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Contatti</a>
-        </li>
-      </ul>
-    </div>
-  </div>
-</nav>
-@if (images) {
-	<ngb-carousel >
-    @for (image of images; track $index) {
-		<ng-template ngbSlide>
-			<div class="picsum-img-wrapper">
-				<img [src]="percorsoFoto+image.Id+'.png'" alt="Random first slide" />
-			</div>
-			<div class="carousel-caption">
-				<h3>{{image.Titolo}}</h3>
-			</div>
-		</ng-template>
-  }
-	</ngb-carousel>
-}
-@else {
-  <p>Non ci sono immagini</p>
-}
+<!-- Aggiungi Navbar-->
+ <app-navbar></app-navbar>
+<!-- Aggiungi il Componente Carousel-->
+<app-carousel></app-carousel>
 <div>
-  <h2>
-    Benvenuti su Cibando
-  </h2>
-  <p class="paragrafo">
+  <h2 [ngClass]="evidenziato ? 'testoEvidenziato' : '' "  (click)="evidenziaTesto()" style="cursor: pointer;">Benvenuti su Cibando</h2>
+  <p class="paragrafo" [ngStyle]="{'background-color': evidenziato ? 'yellow' : 'white'}">
     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur repudiandae distinctio atque consequatur sapiente voluptatibus, dicta dolores velit blanditiis nemo ab natus et sed error facilis illo voluptatem, inventore dolorem.
   </p>
 </div>

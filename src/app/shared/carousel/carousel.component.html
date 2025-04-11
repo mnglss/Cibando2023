@@ -1,0 +1,35 @@
+<!--
+@if (images) {
+<ngb-carousel>
+  @for (image of images; track $index) {
+  <ng-template ngbSlide>
+    <div class="picsum-img-wrapper">
+      <img [src]="percorsoFoto+image.Id+'.png'" alt="Random first slide" />
+    </div>
+    <div class="carousel-caption">
+      <h3>{{image.Titolo}}</h3>
+    </div>
+  </ng-template>
+  }
+</ngb-carousel>
+}
+@else {
+<p>Non ci sono immagini</p>
+}
+-->
+<ngb-carousel *ngIf="images.length > 1; else noCarousel">
+  <ng-template ngbSlide *ngFor="let image of images; let i=index">
+    <div class="picsum-img-wrapper">
+      <img [src]="percorsoFoto+image.Id+'.png'" [alt]="image.Titolo" />
+    </div>
+    <div class="carousel-caption">
+      <h2>{{image.Titolo}} foto {{i+1}} di {{images.length}}</h2>
+      <h5 *ngIf="images.length === i+1">Ultima Foto</h5>
+    </div>
+  </ng-template>
+</ngb-carousel>
+
+<ng-template #noCarousel> <!-- Reference Expression -->
+  <p>Non ci sono immagini</p>
+  <img [src]="percorsoFoto+images[0].Id+'.png'" [alt]="images[0].Titolo" />
+</ng-template>
