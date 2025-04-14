@@ -1,12 +1,4 @@
 <!-- Aggiungi Navbar-->
  <app-navbar></app-navbar>
-<!-- Aggiungi il Componente Carousel-->
-<app-carousel></app-carousel>
-<div>
-  <h2 [ngClass]="evidenziato ? 'testoEvidenziato' : '' "  (click)="evidenziaTesto()" style="cursor: pointer;">Benvenuti su Cibando</h2>
-  <p class="paragrafo" [ngStyle]="{'background-color': evidenziato ? 'yellow' : 'white'}">
-    Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur repudiandae distinctio atque consequatur sapiente voluptatibus, dicta dolores velit blanditiis nemo ab natus et sed error facilis illo voluptatem, inventore dolorem.
-  </p>
-</div>
-<app-recipes></app-recipes>
+
 <router-outlet />

@@ -1,6 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
 @import "bootstrap/dist/css/bootstrap.css";
 @import "primeicons/primeicons.css";
+@import 'bootstrap/scss/bootstrap';
+
+@import "./styles/siteColors.scss";
 
 body {
   //padding: 15px!important;
@@ -17,7 +20,7 @@ nav {
 }
 
 .bg-light {
-  background-color: #8e210b!important;
+  background-color: $primary-color-1!important;
 }
 
 h2 {
@@ -35,5 +38,3 @@ h3 {
 .carousel-caption {
   color: black!important;
 }
-/* Importing Bootstrap SCSS file. */
-@import 'bootstrap/scss/bootstrap';
