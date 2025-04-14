@@ -4,11 +4,12 @@ import { RouterOutlet } from '@angular/router';
 
 import { FormsModule } from '@angular/forms';
 import { CarouselComponent } from "./shared/carousel/carousel.component";
-import { NavbarComponent } from "./shared/navbar/navbar.component"; // Usato per il two way binding nei form
+import { NavbarComponent } from "./shared/navbar/navbar.component";
+import { RecipeComponent } from "./components/recipes/recipes.component"; // Usato per il two way binding nei form
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, FormsModule, CarouselComponent, NgClass, NgStyle, NavbarComponent],
+  imports: [RouterOutlet, FormsModule, CarouselComponent, NgClass, NgStyle, NavbarComponent, RecipeComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
