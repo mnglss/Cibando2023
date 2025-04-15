@@ -2,16 +2,18 @@ import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../../../models/recipe.model';
 import { RecipeService } from '../../../services/recipe.service';
 import { ActivatedRoute, Router } from '@angular/router'; // ActivatedRoute: per leggere la rotta attiva / Router: per collegarmi alla pagina in esito ad un evento
+import { NgIf } from '@angular/common';
 
 
 @Component({
   selector: 'app-detail',
-  imports: [],
+  imports: [NgIf],
   templateUrl: './detail.component.html',
   styleUrl: './detail.component.scss'
 })
 export class DetailComponent implements OnInit {
   recipeDetail: Recipe;
+  difficultyPathImage = '../../../assets/images/Difficolta_';
 
   constructor(
     private recipeSerice: RecipeService,

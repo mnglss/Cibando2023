@@ -1,5 +1,11 @@
 <div class="container-fluid">
   <h2>Elenco Ricette:</h2>
-
-  <app-recipe-card [recipe]="recipeList"></app-recipe-card>
+<!-- <p>
+  <span class="titolo-selezionato">{{imageTitle}}</span>
+</p> -->
+  <div *ngIf="recipeDetails">
+    <span class="titolo-selezionato">{{recipeDetails.title}} - Difficoltà: {{recipeDetails.difficulty}}</span>
+  </div>
+  <!-- <app-recipe-card [recipe]="recipeList" (messaggio)="riceviTitolo($event)"></app-recipe-card> -->
+  <app-recipe-card [recipe]="recipeList" (details)="getDetails($event)"></app-recipe-card>
 </div>

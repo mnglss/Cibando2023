@@ -1,7 +1,17 @@
-<div class="recipeDetail">
-  <img src="{{recipeDetail.image}}">
-  <h2>{{recipeDetail.title}}</h2>
-  <p>
-    {{recipeDetail.description}}
-  </p>
+<div *ngIf="recipeDetail">
+  <div class="recipeDetail">
+    <img src="{{recipeDetail.image}}">
+    <div class="container-fluid">
+      <h2>{{recipeDetail.title}}</h2>
+      <p>
+        {{recipeDetail.description}}
+      </p>
+      <p><b>Difficoltà</b>: <span><img [src]="difficultyPathImage+recipeDetail.difficulty+'.png'" class="difficulty" /></span></p>
+      <p><b>Data</b>: {{recipeDetail.creationDate}}</p>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!recipeDetail">
+  Siamo spiacenti, la ricetta non esiste!
 </div>

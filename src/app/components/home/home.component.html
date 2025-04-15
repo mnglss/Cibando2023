@@ -5,4 +5,11 @@
   <p class="paragrafo" [ngStyle]="{'background-color': evidenziato ? 'yellow' : 'white'}">
     Lorem ipsum, dolor sit amet consectetur adipisicing elit. Tenetur repudiandae distinctio atque consequatur sapiente voluptatibus, dicta dolores velit blanditiis nemo ab natus et sed error facilis illo voluptatem, inventore dolorem.
   </p>
+
+  <div class="container-fluid">
+    <h2>Ultime Ricette:</h2>
+
+    <app-recipe-card [recipe]="recipeList"></app-recipe-card>
+  </div>
+
 </div>

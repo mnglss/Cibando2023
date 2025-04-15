@@ -1,4 +1,4 @@
-//@import '../../../../styles/siteColors.scss';
+
 @import '../../../../styles/siteColors.scss';
 
 .recipeDetail {
@@ -11,10 +11,15 @@
   }
 
   h2 {
+    font-family: "Homemade Apple", cursive;
     color: $primary-color-2;
     margin-top: 25px;
   }
-  p{
-    font-family: "Homemade Apple", cursive;
+  p {
+    font-family: "Montserrat";
+  }
+
+  .difficulty {
+    width: 10%;
   }
 }

@@ -18,10 +18,11 @@
 <div>
   <div class="container-card" *ngFor="let item of recipe">
     <div class="card">
-      <div class="card-img-top" [ngStyle]="{'background-image': 'url('+item.image+')'}"></div>
+      <!--<div class="card-img-top" [ngStyle]="{'background-image': 'url('+item.image+')'}" (click)="inviaTitolo(item.title)"></div>-->
+      <div class="card-img-top" [ngStyle]="{'background-image': 'url('+item.image+')'}" (click)="sendDetails(item._id)"></div>
       <div class="card-body">
         <h5 class="card-title">{{item.title}}</h5>
-        <p class="card-text">{{item.description}}</p>
+        <p class="card-text">{{item.description | slice: 0:100}} ...</p>
         <div class="link">
           <a routerLink="detail/{{item.title}}/{{item._id}}" class="btn">Visualizza</a>
       </div>
