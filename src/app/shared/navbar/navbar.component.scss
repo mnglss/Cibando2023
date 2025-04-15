@@ -1,6 +1,8 @@
+@import url('../../../styles/siteColors.scss');
 
 .bg-light {
-  background-color: #8e210b!important;
+  //background-color: #8e210b!important;
+  background-color: $primary-color-1;
   color: white!important;
 }
 

@@ -6,10 +6,12 @@
   width: 23%;
   margin-left: 1.5%;
   margin-bottom: 20px;
+  font-family: 'Monteserrat';
 
   .card-title{
+    padding-top: 30px;
     font-weight: bold!important;
-    font-size: 16px!important;
+    font-size: 30px!important;
     color: $primary-color-1!important;
   }
 
@@ -19,13 +21,12 @@
     background-repeat: no-repeat!important;
   }
 
-
-
   .card-body{
 
     .card-text{
       text-align: justify!important;
       color: $secondary-color-3!important;
+      font-family: 'Homemade Apple';
     }
 
     .link{

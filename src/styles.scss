@@ -2,8 +2,10 @@
 @import "bootstrap/dist/css/bootstrap.css";
 @import "primeicons/primeicons.css";
 @import 'bootstrap/scss/bootstrap';
+/*
+*/
+@import '../src/styles/siteColors.scss';
 
-@import "./styles/siteColors.scss";
 
 body {
   //padding: 15px!important;

@@ -19,7 +19,7 @@
 -->
 <ngb-carousel *ngIf="images.length > 1; else noCarousel">
   <ng-template ngbSlide *ngFor="let image of images; let i=index">
-    <div class="picsum-img-wrapper">
+    <div class="picsum-img-wrapper" style="height: 700px;">
       <img [src]="percorsoFoto+image.Id+'.jpg'" [alt]="image.Titolo" style="width: 100%;"/>
     </div>
     <div class="carousel-caption">
