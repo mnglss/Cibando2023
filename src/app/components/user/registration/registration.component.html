@@ -173,7 +173,7 @@
               <div class="controls">
                 <div class="input-group mb-3">
                   <span class="input-group-text" id="basic-addon2"><i class="pi pi-at"></i></span>
-                  <input type="text" class="form-control" placeholder="Email" aria-label="Username" aria-describedby="basic-addon1" formControlName="email">
+                  <input type="text" class="form-control" placeholder="Email" formControlName="email">
                 </div>
                 <p class="help" *ngIf="form.controls.email.hasError('required') && form.get('email').touched">Questo campo è obbligatorio!</p>
                 <p class="help" *ngIf="form.controls.email.hasError('email') && form.controls.email.touched">Questo campo non è valido!</p>
@@ -184,9 +184,10 @@
               <div class="controls">
                 <div class="input-group mb-3">
                   <span class="input-group-text" id="basic-addon3"><i class="pi pi-key"></i></span>
-                  <input type="text" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1" formControlName="password">
+                  <input type="text" class="form-control" placeholder="Password" formControlName="password">
                 </div>
-                <p class="help" *ngIf="!form.get('password').valid && form.get('password').touched">Questo campo è obbligatorio!</p>
+                <p class="help" *ngIf="form.controls.password.hasError('required') && form.get('password').touched">Questo campo è obbligatorio</p>
+                <p class="help" *ngIf="form.controls.password.hasError('pattern')">La password non corrisponde ai criteri ammessi!</p>
               </div>
             </div>
 
@@ -194,9 +195,10 @@
               <div class="controls">
                 <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon3"><i class="pi pi-key"></i></span>
-                <input type="text" class="form-control" placeholder="Ripeti la password" aria-label="Username" aria-describedby="basic-addon1" formControlName="repeatPassword">
+                <input type="text" class="form-control" placeholder="Ripeti la password" formControlName="repeatPassword">
                 </div>
                 <p class="help" *ngIf="!form.get('repeatPassword').valid && form.get('repeatPassword').touched">Questo campo è obbligatorio!</p>
+                <p class="help" *ngIf="form.getError('noMatch') && form.get('repeatPassword').touched">Le password digitate non corrispondono!</p>
               </div>
             </div>
 
@@ -213,7 +215,7 @@
             <div class="row">
               <div class="controls">
                 <div style="text-align: center;">
-                  <button  type="submit" class="btn btn-lg" [disabled]="!form.valid">Registrati</button>
+                  <button  type="submit" class="btn btn-lg" >Registrati</button> <!-- [disabled]="!form.valid" -->
                 </div>
               </div>
             </div>
