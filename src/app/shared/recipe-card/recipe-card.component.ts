@@ -22,4 +22,12 @@ export class RecipeCardComponent {
   sendDetails(id: number){
     this.details.emit(this.recipe.find(r=>r._id===id));
   }
+
+  sliceDescription(descriptionToSlice: string): number{
+    var maxLength = 240;
+    if (descriptionToSlice.length < maxLength)
+      return maxLength;
+    let lastBlankPosition = descriptionToSlice.indexOf(' ', maxLength);
+    return lastBlankPosition;
+  }
 }

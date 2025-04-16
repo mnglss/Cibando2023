@@ -1,0 +1,65 @@
+@import '../../../../styles/siteColors.scss';
+
+input.ng-invalid.ng-touched{
+  border: 1px solid red;
+}
+
+input.ng-valid.ng-touched{
+  border: 1px solid greenyellow;
+}
+
+.card{
+  border: 2px solid $primary-color-1;
+  margin-top: 20px;
+}
+
+.card-title{
+  color: $primary-color-1;
+}
+
+.text-center{
+  color: $primary-color-1;
+}
+
+.btn{
+  background-color: $primary-color-1;
+}
+
+.help{
+  font-weight: bold;
+  font-size: 10px;
+  color: red;
+  top: -15px;
+  float: right;
+  position: relative;
+}
+.help-accept{
+  font-weight: bold;
+  font-size: 10px;
+  color: red;
+  top: -5px;
+  text-align: center;
+  position: relative;
+}
+
+.controls{
+  height: 80px;
+}
+
+.card-title{
+  text-align: center;
+  font-size: 50px;
+
+}
+
+.subtitle{
+  font-family: "Montserrt";
+  text-align: center;
+  font-size: 15px;
+  color: $primary-color-2;
+  padding-bottom: 20px;
+}
+
+.link{
+  color: $primary-color-1;
+}

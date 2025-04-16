@@ -1,0 +1,229 @@
+<!-- Template Driven -->
+<!--
+<div class="container">
+  <section class="vh-100" style="background-color: #eee;">
+    <div class="container h-100">
+      <div class="row d-flex justify-content-center align-items-center h-100">
+        <div class="col-lg-12 col-xl-11">
+          <div class="card text-black" style="border-radius: 25px;">
+            <div class="card-body p-md-5">
+              <div class="row justify-content-center">
+                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+                  <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Registrati su Cibando</p>
+
+                  <form class="mx-1 mx-md-4" #form="ngForm" (submit)="onSubmit(form.v)">
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-user fa-lg me-3 fa-fw"></i>
+                      <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                        <input type="text" id="form3Example1c" class="form-control" name="userName" ngModel />
+                        <label class="form-label" for="form3Example1c">Il tuo nome</label>
+                      </div>
+                    </div>
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                      <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                        <input type="email" id="form3Example3c" class="form-control" name="userEmail" ngModel />
+                        <label class="form-label" for="form3Example3c">La tua Email</label>
+                      </div>
+                    </div>
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                      <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                        <input type="password" id="form3Example4c" class="form-control" name="userPwd" ngModel />
+                        <label class="form-label" for="form3Example4c">Password</label>
+                      </div>
+                    </div>
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                      <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                        <input type="password" id="form3Example4cd" class="form-control" name="userPwd2" ngModel />
+                        <label class="form-label" for="form3Example4cd">Ripeti la password</label>
+                      </div>
+                    </div>
+
+                    <div class="form-check d-flex justify-content-center mb-5">
+                      <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" name="userAccept" ngModel />
+                      <label class="form-check-label" for="form2Example3">
+                        Accetti i <a href="#!">Termini del servizio</a>
+                      </label>
+                    </div>
+
+                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                      <button  type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg">Registrati</button>
+                    </div>
+
+                  </form>
+
+                </div>
+                <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+
+                  <img src="../../../../../src/assets/images/Registrazione.jpg"
+                    class="img-fluid" alt="Sample image">
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+-->
+<!-- Reactive Form-->
+<!-- <div class="container">
+        <div class="col-lg-12 col-xl-11">
+          <div class="card" style="border-radius: 25px;">
+              <div class="">
+                <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
+
+                  <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Registrati</p>
+
+                  <form class="mx-1 mx-md-4" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="pi pi-user"></i>
+                      <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                        <input type="text" id="form3Example1c" class="form-control" formControlName="name" />
+                        <label class="form-label" for="form3Example1c">Il tuo nome</label>
+                        <p class="help is-danger" *ngIf="!form.get('name').valid && form.get('name').touched">Questo campo è obbligatorio!</p>
+                      </div>
+                    </div>
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
+                      <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                        <input type="email" id="form3Example3c" class="form-control" formControlName="email" />
+                        <label class="form-label" for="form3Example3c">La tua Email</label>
+                        <p class="help is-danger" *ngIf="form.controls.email.hasError('required') && form.get('email').touched">Questo campo è obbligatorio!</p>
+                        <p class="help is-danger" *ngIf="form.controls.email.hasError('email') && form.controls.email.touched">Questo campo non è valido!</p>
+                      </div>
+                    </div>
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
+                      <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                        <input type="password" id="form3Example4c" class="form-control" formControlName="password"/>
+                        <label class="form-label" for="form3Example4c">Password</label>
+                        <p class="help is-danger" *ngIf="!form.get('password').valid && form.get('password').touched">Questo campo è obbligatorio!</p>
+                      </div>
+                    </div>
+
+                    <div class="d-flex flex-row align-items-center mb-4">
+                      <i class="fas fa-key fa-lg me-3 fa-fw"></i>
+                      <div data-mdb-input-init class="form-outline flex-fill mb-0">
+                        <input type="password" id="form3Example4cd" class="form-control" formControlName="repeatPassword" />
+                        <label class="form-label" for="form3Example4cd">Ripeti la password</label>
+                        <p class="help is-danger" *ngIf="!form.get('repeatPassword').valid && form.get('repeatPassword').touched">Questo campo è obbligatorio!</p>
+                      </div>
+                    </div>
+
+                    <div class="form-check d-flex justify-content-center mb-5">
+                      <input class="form-check-input me-2" type="checkbox" value="" id="form2Example3c" formControlName="accept"/>
+                      <label class="form-check-label" for="form2Example3">
+                        Accetto i <a href="#!">Termini del servizio</a>
+                      </label>
+                      <p class="help is-danger" *ngIf="!form.get('accept').valid && form.get('accept').touched">Questo campo è obbligatorio!</p>
+                    </div>
+
+                    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+                      <p *ngIf="form.valid">Il form e compilato correttamente</p>
+                      <button  type="submit" data-mdb-button-init data-mdb-ripple-init class="btn btn-primary btn-lg" [disabled]="!form.valid">Registrati</button>
+                    </div>
+
+                  </form>
+
+                </div>
+                <div class="col-md-10 col-lg-6 col-xl-7 d-flex align-items-center order-1 order-lg-2">
+
+                  <img src="../../../../../src/assets/images/Registrazione.jpg"
+                    class="img-fluid" alt="Sample image">
+
+                </div>
+              </div>
+          </div>
+        </div>
+</div> -->
+
+<div class="container">
+  <div class="card mb-12" style="height: 700px; border-radius: 7px;">
+    <div class="row g-0">
+      <div class="col-md-5">
+        <div class="card-body" [formGroup]="form" (ngSubmit)="onSubmit()">
+          <h5 class="card-title">REGISTRATI</h5>
+          <h3 class="subtitle">Registrandoti sarai avvisato alla pubblicazione di nuove ricette!</h3>
+          <form class="" [formGroup]="form" (ngSubmit)="onSubmit()">
+
+            <div class="row">
+              <div class="controls">
+                <div class="input-group mb-3">
+                  <span class="input-group-text"><i class="pi pi-user"></i></span>
+                  <input id="username" type="text" class="form-control" placeholder="Il tuo nome" formControlName="name">
+                </div>
+                <p class="help" *ngIf="!form.get('name').valid && form.get('name').touched">Questo campo è obbligatorio!</p>
+              </div>
+            </div>
+
+          <div class="row">
+            <div class="controls">
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon2"><i class="pi pi-at"></i></span>
+                <input type="text" class="form-control" placeholder="Email" aria-label="Username" aria-describedby="basic-addon1" formControlName="email">
+              </div>
+              <p class="help" *ngIf="form.controls.email.hasError('required') && form.get('email').touched">Questo campo è obbligatorio!</p>
+              <p class="help" *ngIf="form.controls.email.hasError('email') && form.controls.email.touched">Questo campo non è valido!</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="controls">
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon3"><i class="pi pi-key"></i></span>
+                <input type="text" class="form-control" placeholder="Password" aria-label="Username" aria-describedby="basic-addon1" formControlName="password">
+              </div>
+              <p class="help" *ngIf="!form.get('password').valid && form.get('password').touched">Questo campo è obbligatorio!</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="controls">
+              <div class="input-group mb-3">
+              <span class="input-group-text" id="basic-addon3"><i class="pi pi-key"></i></span>
+              <input type="text" class="form-control" placeholder="Ripeti la password" aria-label="Username" aria-describedby="basic-addon1" formControlName="repeatPassword">
+              </div>
+              <p class="help" *ngIf="!form.get('repeatPassword').valid && form.get('repeatPassword').touched">Questo campo è obbligatorio!</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="controls">
+              <div class="" style="text-align: center;">
+                  <span class="link"><input class="" type="checkbox" formControlName="accept">
+                  Dichiaro di accettare i Termini del Servizio</span>
+              </div>
+              <p class="help-accept" *ngIf="!form.get('accept').valid && form.get('accept').touched">La dichiarazione è obbligatoria!</p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="controls">
+              <div style="text-align: center;">
+                <button  type="submit" class="btn btn-lg" [disabled]="!form.valid">Registrati</button>
+              </div>
+            </div>
+          </div>
+
+          </form>
+        </div>
+      </div>
+      <div class="col-md-7" style="background-image: url('../../../../assets/images/Registrazione.jpg'); height: 700px;">
+        <!-- <img src="../../../../assets/images/Registrazione.jpg" class="rounded-end" style="width: 100%;" alt="..."> -->
+      </div>
+    </div>
+  </div>
+</div>

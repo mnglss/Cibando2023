@@ -1,20 +1,16 @@
-@import url('../../../styles/siteColors.scss');
+@import '../../../styles/siteColors.scss';
 
 .bg-light {
   //background-color: #8e210b!important;
   background-color: $primary-color-1;
-  color: white!important;
+  font-weight: 500;
 }
 
 .nav-link{
-  color: white!important;
-}
-
-.nav-link{
-  color: white!important;
+  color: $secondary-color-3;
 }
 
 .navbar-brand{
-  color: white!important;
+  color: $secondary-color-3;
   font-weight: bold;
 }
