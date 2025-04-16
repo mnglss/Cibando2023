@@ -4,6 +4,7 @@ import { NgClass, NgStyle } from '@angular/common';
 import { CarouselComponent } from '../../shared/carousel/carousel.component';
 import { Recipe } from '../../models/recipe.model';
 import { RecipeService } from '../../services/recipe.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-home',
@@ -15,11 +16,21 @@ export class HomeComponent implements OnInit {
   evidenziato = false;
   recipeList: Recipe[];
 
-  constructor(private recipeService: RecipeService){}
+  nomeUtente: string;
+  emailUtente: string;
+
+  constructor(
+    private recipeService: RecipeService,
+    private userService: UserService){}
 
   ngOnInit(): void {
     //throw new Error('Method not implemented.');
     this.getLastRecipes();
+
+    this.userService.datiUtente.subscribe((res: any) => {
+      this.nomeUtente = res.nome;
+      this.emailUtente = res.email;
+    })
   }
 
   evidenziaTesto() {
