@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Recipe } from '../../../models/recipe.model';
-import { RecipeService } from '../../../services/recipe.service';
 import { RecipeCardComponent } from "../../../shared/recipe-card/recipe-card.component";
 import { NgIf } from '@angular/common';
 
@@ -17,18 +16,10 @@ export class RecipesListComponent implements OnInit{
   imageTitle: string;
   recipeDetails: Recipe;
 
-  constructor(private recipeService: RecipeService) { }
+  constructor() { }
 
   ngOnInit(): void {
     this.recipeDetails = undefined;
-    this.recipeService.getRecipes().subscribe({
-      next: (recipesResponse) => {
-        this.recipeList = recipesResponse;
-      },
-      error: (error) => {
-        console.log(error);
-      }
-    })
   }
 
   riceviTitolo(e: string) {

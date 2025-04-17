@@ -15,7 +15,7 @@ import { UserService } from './../../../services/user.service';
   styleUrl: './registration.component.scss'
 })
 export class RegistrationComponent {
-  regExPassword = "/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/";
+  regExPassword = '^(?=.*\\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\\w\\d\\s:])([^\\s]){8,16}$';
   form = new FormGroup({
     name: new FormControl('', Validators.required),
     email: new FormControl('', [Validators.required, Validators.email]),

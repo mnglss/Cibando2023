@@ -7,5 +7,6 @@
     <span class="titolo-selezionato">{{recipeDetails.title}} - Difficoltà: {{recipeDetails.difficulty}}</span>
   </div>
   <!-- <app-recipe-card [recipe]="recipeList" (messaggio)="riceviTitolo($event)"></app-recipe-card> -->
-  <app-recipe-card [recipe]="recipeList" (details)="getDetails($event)"></app-recipe-card>
+  <!-- <app-recipe-card [recipe]="recipeList" (details)="getDetails($event)"></app-recipe-card> -->
+  <app-recipe-card (details)="getDetails($event)"></app-recipe-card>
 </div>
