@@ -1,7 +1,7 @@
-<div class="container-paginator">
-  <!-- <p-paginator (onPageChange)="onPageChange($event)" [first]="first" [rows]="rows" [totalRecords]="120" [rowsPerPageOptions]="[10, 20, 30]" /> -->
+<div class="container-paginator" *ngIf="pageCaller!='home'">
+  <p-paginator (onPageChange)="onPageChange($event)" [rows]="ricepesForPage" [totalRecords]="recipeList.length"  />
 </div>
-
+{{recipeList.length}}
 <div>
   <div class="container-card" *ngFor="let item of recipeList | slice: (page * ricepesForPage) - ricepesForPage : page * ricepesForPage">
     <div class="card">

@@ -1,5 +1,5 @@
-import { NgFor, NgStyle, SlicePipe } from '@angular/common';
-import { Component, Output, EventEmitter, OnInit } from '@angular/core';
+import { NgFor, NgStyle, SlicePipe, NgIf } from '@angular/common';
+import { Component, Output, EventEmitter, OnInit, Input } from '@angular/core';
 import { Recipe } from '../../models/recipe.model';
 import { RouterLink } from '@angular/router';
 import { RecipeService } from '../../services/recipe.service';
@@ -7,7 +7,7 @@ import { PaginatorModule } from 'primeng/paginator'
 
 @Component({
   selector: 'app-recipe-card',
-  imports: [NgFor, NgStyle, RouterLink, SlicePipe, PaginatorModule],
+  imports: [NgFor, NgStyle, RouterLink, SlicePipe, PaginatorModule, NgIf],
   templateUrl: './recipe-card.component.html',
   styleUrl: './recipe-card.component.scss'
 })
@@ -15,6 +15,8 @@ export class RecipeCardComponent implements OnInit {
   recipeList: Recipe[];
   @Output() messaggio = new EventEmitter<string>();
   @Output() details = new EventEmitter<Recipe>();
+
+  @Input() pageCaller;
 
   page = 1;
   ricepesForPage = 4;
@@ -49,7 +51,7 @@ export class RecipeCardComponent implements OnInit {
     return lastBlankPosition;
   }
 
-  paginate(event){
+  onPageChange(event){
     event.page = event.page+1;
     this.page = event.page;
   }

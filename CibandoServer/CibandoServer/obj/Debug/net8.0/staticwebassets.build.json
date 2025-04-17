@@ -1,0 +1,12 @@
+{
+  "Version": 1,
+  "Hash": "20OGHTazCXK9TzHTgMipqtu6oGx1896iABoUVwk4XPs=",
+  "Source": "CibandoServer",
+  "BasePath": "_content/CibandoServer",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": [],
+  "Endpoints": []
+}
