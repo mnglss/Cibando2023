@@ -13,12 +13,22 @@
   </div>
 
 </div>
+<button (click)="openModal(modalRegistration)" class="btn btn-primary" ngbAutofocus-Azione>Apri modale</button> <!-- Aprire una modale con il click del pulsante  -->
 
-
-<div id="datiUtete">
-  <h2>Grazie per esserti registrato:</h2>
-  <ul>
-    <li>nome: {{nomeUtente}}</li>
-    <li>email: {{emailUtente}}</li>
-  </ul>
-</div>
+<ng-template #modalRegistration let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Grazie per esserti registrato</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <ul>
+      <li>nome: {{nomeUtente}}</li>
+      <li>email: {{emailUtente}}</li>
+    </ul>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="modal.close('Close click')" ngbAutofocus-Azione>Chiudi</button>
+  </div>
+</ng-template>

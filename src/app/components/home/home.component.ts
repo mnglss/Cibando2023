@@ -1,5 +1,5 @@
 import { RecipeCardComponent } from './../../shared/recipe-card/recipe-card.component';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ElementRef, viewChild, ViewChild } from '@angular/core';
 import { NgClass, NgStyle } from '@angular/common';
 import { CarouselComponent } from '../../shared/carousel/carousel.component';
 import { Recipe } from '../../models/recipe.model';
@@ -19,17 +19,21 @@ export class HomeComponent implements OnInit {
   nomeUtente: string;
   emailUtente: string;
 
+  @ViewChild('modalRegistration', {static: false}) myModalAfterRegistration: ElementRef;
+
   constructor(
-    private recipeService: RecipeService,
+    //private recipeService: RecipeService,
     private userService: UserService){}
 
   ngOnInit(): void {
     //throw new Error('Method not implemented.');
-    this.getLastRecipes();
+    //this.getLastRecipes();
 
     this.userService.datiUtente.subscribe((res: any) => {
       this.nomeUtente = res.nome;
       this.emailUtente = res.email;
+
+      this.openModal(this.myModalAfterRegistration);
     })
   }
 
@@ -46,7 +50,17 @@ export class HomeComponent implements OnInit {
     this.colorePagina = this.coloreScelto;
   }
 
-  getLastRecipes(){
+  openModal(content: any) {
+    this.modalService.open(content, { ariaLabelledBy: 'modal registration', size: 'lg', centered: true }).result
+    .then((result) => {
+      console.log(`azione da eseguire`); // .close ngbAutofocus-AZIONE
+    })
+    .catch((error) => {
+      console.log(`nessuna azione da eseguire`); // .dismiss
+    });
+  }
+
+  /* getLastRecipes(){
     this.recipeService.getRecipes().subscribe({
       next: (recipesResponse) => {
         this.recipeList = recipesResponse
@@ -58,5 +72,5 @@ export class HomeComponent implements OnInit {
         console.log(error);
       }
     })
-  }
+  } */
 }
