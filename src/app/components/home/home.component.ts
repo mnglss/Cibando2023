@@ -5,6 +5,7 @@ import { CarouselComponent } from '../../shared/carousel/carousel.component';
 import { Recipe } from '../../models/recipe.model';
 import { RecipeService } from '../../services/recipe.service';
 import { UserService } from '../../services/user.service';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'app-home',
@@ -23,6 +24,7 @@ export class HomeComponent implements OnInit {
 
   constructor(
     //private recipeService: RecipeService,
+    private modalService: NgbModal,
     private userService: UserService){}
 
   ngOnInit(): void {
