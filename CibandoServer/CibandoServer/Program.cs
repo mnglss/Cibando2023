@@ -1,8 +1,23 @@
-using CibandoServer.Models;
+using CibandoServer.Core.Interfaces;
+using CibandoServer.Core.Services;
+using CibandoServer.Data;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+
+builder.Services.AddDbContext<CibandoDbContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("CibandoServerContext")));
+
+builder.Services.AddTransient<IDbContextFactory, DbContextFactory>();
+builder.Services.AddTransient<ICibandoRepository, CibandoRepository>();
+
+builder.Services.AddTransient<IRecipeService, RecipeService>();
+
+builder.Services.AddControllersWithViews();
+builder.Services.AddEndpointsApiExplorer();
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -18,7 +33,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-var summaries = new[]
+/* var summaries = new[]
 {
     "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
 };
@@ -37,6 +52,27 @@ app.MapGet("/weatherforecast", () =>
 })
 .WithName("GetWeatherForecast")
 .WithOpenApi();
+
+app.MapGet("/Users", () =>
+{
+  return Results.Ok(new[]
+  {
+      new User
+      {
+        Id = 1,
+        Name = "Mario",
+        Email = "mario@email.it",
+        Password = "Password#123"
+      },
+      new User
+      {
+        Id = 2,
+        Name = "Marco",
+        Email = "marco@email.it",
+        Password = "Password#123"
+      }
+  });
+});
 
 app.MapGet("/Recipes", () =>
 {
@@ -105,7 +141,10 @@ app.MapGet("/Recipes", () =>
             IsPiblished = true
         }
     });
-});
+}); */
+
+
+app.MapControllers();
 
 app.Run();
 
