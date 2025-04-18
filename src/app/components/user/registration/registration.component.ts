@@ -39,7 +39,8 @@ export class RegistrationComponent {
       name: this.form.value.name,
       email: this.form.value.email,
       password: this.form.value.password,
-      accepted: this.form.value.accepted
+      accepted: this.form.value.accepted,
+      role: 'user'
     };
 
     this.userService.addUser(addUser).subscribe({

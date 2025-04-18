@@ -6,5 +6,6 @@ namespace CibandoServer.Controller.Dtos
     public required string Email { get; set; }
     public required string Password { get; set; }
     public required bool Accepted { get; set; }
+    public required string Role { get; set; }
   }
 }

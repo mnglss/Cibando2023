@@ -20,6 +20,7 @@ namespace CibandoServer.Core.Service
       if (await _userRepository.GetUserAsync(user.Email, user.Password)!= null)
         return false;
 
+      user.Id = Guid.NewGuid(); // Generate a new GUID for the user ID
       await _userRepository.AddUserAsync(user);
       return true;
       }
