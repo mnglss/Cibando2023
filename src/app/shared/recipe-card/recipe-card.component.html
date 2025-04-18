@@ -11,9 +11,27 @@
         <h5 class="card-title">{{item.title}}</h5>
         <p class="card-text">{{item.description | slice: 0:sliceDescription(item.description)}} ...</p>
         <div class="link">
-          <a routerLink="detail/{{item.title}}/{{item.id}}" class="btn">Visualizza</a>
+          <span>
+            <a routerLink="detail/{{item.title}}/{{item.id}}" class="btn">Visualizza</a>&nbsp; <!-- Pulsante per visualizzare la ricetta -->
+            <button (click)="openDeleteModal(modalDeleteRecipe, item.id)" class="btn btn-primary" ngbAutofocus-Azione><i class="pi pi-trash"></i></button> <!-- Aprire una modale con il click del pulsante  -->
+          </span>
       </div>
       </div>
     </div>
   </div>
 </div>
+
+<ng-template #modalDeleteRecipe let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">Elimina ricetta</h4>
+    <button type="button" class="close pull-right" aria-label="Close" (click)="modal.dismiss('Cross click')">
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    Confermi di voler eliminare la ricetta <b>{{titleRecipeToDelete}}</b>?
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-primary" (click)="modal.close('Close click')" ngbAutofocus-Azione>Ok</button>
+  </div>
+</ng-template>

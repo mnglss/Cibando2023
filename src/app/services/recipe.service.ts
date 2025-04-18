@@ -25,4 +25,9 @@ export class RecipeService {
     // Back Tick => Alt+96 `
     return this.httpClient.get<Recipe>(`${this.apiUrl}/${id}`);
   }
+
+  deleteRecipe(id: number): Observable<void>{
+    //return of (RECIPES.filter(r => r.id !== id));
+    return this.httpClient.delete<void>(`${this.apiUrl}/${id}`);
+  }
 }

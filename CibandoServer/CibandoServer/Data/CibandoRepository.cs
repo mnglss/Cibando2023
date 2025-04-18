@@ -17,7 +17,7 @@ namespace CibandoServer.Data
       public async Task<IEnumerable<Recipe>> GetAllAsync()
       {
         using var dbContext = _dbContextFactory.CreateDbContextAsync();
-        var recipes = await dbContext.Recipes.ToListAsync();
+        var recipes = await dbContext.Recipes.Where(r => r.IsPiblished).ToListAsync();
         if (recipes == null || recipes.Count == 0)
           return [];
         return recipes;
@@ -49,7 +49,9 @@ namespace CibandoServer.Data
         var recipe = await GetByIdAsync(id);
         if (recipe != null)
         {
-          dbContext.Recipes.Remove(recipe);
+          //dbContext.Recipes.Remove(recipe); // Elimina dal DB
+          recipe.IsPiblished = false; // Imposta lo stato dell'oggetto a "Deleted"
+          dbContext.Recipes.Update(recipe); // Aggiorna lo stato dell'oggetto a "Deleted"
           await dbContext.SaveChangesAsync();
         }
       }

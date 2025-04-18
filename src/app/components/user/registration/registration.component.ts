@@ -16,7 +16,7 @@ import { UserService } from './../../../services/user.service';
   styleUrl: './registration.component.scss'
 })
 export class RegistrationComponent {
-
+  password: string;
 
   regExPassword = '^(?=.*\\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\\w\\d\\s:])([^\\s]){8,16}$';
   form = new FormGroup({
@@ -43,7 +43,7 @@ export class RegistrationComponent {
       role: 'user'
     };
 
-    this.userService.addUser(addUser).subscribe({
+    /* this.userService.addUser(addUser).subscribe({
       next: (response) => {
         console.log(response);
 
@@ -56,7 +56,7 @@ export class RegistrationComponent {
         console.error(error);
         alert('Errore durante la registrazione: '+error.message); // Mostra un messaggio di errore all'utente
       }
-    });
+    }); */
 
 
   }

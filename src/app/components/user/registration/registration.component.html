@@ -184,7 +184,7 @@
               <div class="controls">
                 <div class="input-group mb-3">
                   <span class="input-group-text" id="basic-addon3"><i class="pi pi-key"></i></span>
-                  <p-password  [toggleMask]="true" class="form-control" formControlName="password" strongRegex="^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$" />
+                  <p-password [toggleMask]="true" class="form-control" formControlName="password" strongRegex="^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$" />
                 </div>
                 <p class="help" *ngIf="form.controls.password.hasError('required') && form.get('password').touched">Questo campo è obbligatorio</p>
                 <p class="help" *ngIf="form.controls.password.hasError('pattern')">La password non corrisponde ai criteri ammessi!</p>
@@ -208,7 +208,7 @@
                     <span class="link"><input class="" type="checkbox" formControlName="accepted">
                     Dichiaro di accettare i Termini del Servizio</span>
                 </div>
-                <p class="help-accept" *ngIf="!form.get('accept').valid && form.get('accept').touched">La dichiarazione è obbligatoria!</p>
+                <p class="help-accept" *ngIf="!form.get('accepted').valid && form.get('accepted').touched">La dichiarazione è obbligatoria!</p>
               </div>
             </div>
 
