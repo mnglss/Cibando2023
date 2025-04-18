@@ -29,7 +29,7 @@ export class DetailComponent implements OnInit {
   // 1° Metodo di recupero parametri da url (snapshot)
   onGetRecipe(): void {
     // Recuperare id dalla url per 1 parametro
-    const id = Number(this.activatedRoute.snapshot.paramMap.get('_id'));
+    const id = Number(this.activatedRoute.snapshot.paramMap.get('id'));
     this.recipeSerice.getRecipe(id).subscribe({
       next: (recipeResponse) => {
         this.recipeDetail = recipeResponse;

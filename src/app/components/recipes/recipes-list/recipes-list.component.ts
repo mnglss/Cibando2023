@@ -28,7 +28,7 @@ export class RecipesListComponent implements OnInit{
 
   getDetails(e: any){
     if (this.recipeDetails){
-      this.recipeDetails = this.recipeDetails._id == e._id ?  undefined : e ;
+      this.recipeDetails = this.recipeDetails.id == e._id ?  undefined : e ;
     }
     else {
       this.recipeDetails = e;

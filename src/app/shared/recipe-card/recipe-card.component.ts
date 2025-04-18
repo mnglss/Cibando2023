@@ -40,7 +40,7 @@ export class RecipeCardComponent implements OnInit {
 
   sendDetails(id: number){
     //this.details.emit(this.recipe.find(r=>r._id===id));
-    this.details.emit(this.recipeList.find(r=>r._id===id));
+    this.details.emit(this.recipeList.find(r=>r.id===id));
   }
 
   sliceDescription(descriptionToSlice: string): number{

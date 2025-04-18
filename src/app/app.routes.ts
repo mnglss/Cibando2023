@@ -10,7 +10,7 @@ export const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'recipe', component: RecipeComponent, children: [
     { path: '', component: RecipesListComponent, pathMatch: 'full' },
-    { path: 'detail/:title/:_id', component: DetailComponent }, // Routing dinamico
+    { path: 'detail/:title/:id', component: DetailComponent }, // Routing dinamico
     ]
   },
   { path: 'registration', component: RegistrationComponent },
