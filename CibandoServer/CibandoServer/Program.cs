@@ -1,4 +1,5 @@
 using CibandoServer.Core.Interfaces;
+using CibandoServer.Core.Service;
 using CibandoServer.Core.Services;
 using CibandoServer.Data;
 using Microsoft.EntityFrameworkCore;
@@ -12,8 +13,10 @@ builder.Services.AddDbContext<CibandoDbContext>(options =>
 
 builder.Services.AddTransient<IDbContextFactory, DbContextFactory>();
 builder.Services.AddTransient<ICibandoRepository, CibandoRepository>();
+builder.Services.AddTransient<IUserRepository, UserRepository>();
 
 builder.Services.AddTransient<IRecipeService, RecipeService>();
+builder.Services.AddTransient<IUserService, UserService>();
 
 builder.Services.AddControllersWithViews();
 builder.Services.AddEndpointsApiExplorer();

@@ -9,6 +9,8 @@ import { Observable, of } from 'rxjs';
 })
 export class RecipeService {
   private apiUrl = 'http://localhost:5137/api/Recipe'; // Example API URL
+  // Oppure se l'app partre con il comando start modificato
+  // private apiBaseUrl = '/api/Recipe'; // Perche 'http://localhost:5137' viene preso dal proxy.conf.json
 
   constructor(private httpClient: HttpClient) { }
 
@@ -20,6 +22,7 @@ export class RecipeService {
   getRecipe(id: number): Observable<Recipe | undefined>{
     //const recipe = RECIPES.find(r => r.id === id);
     //return of (recipe);
+    // Back Tick => Alt+96 `
     return this.httpClient.get<Recipe>(`${this.apiUrl}/${id}`);
   }
 }
