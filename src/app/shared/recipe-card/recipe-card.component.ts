@@ -1,4 +1,4 @@
-import { NgFor, NgStyle, SlicePipe, NgIf } from '@angular/common';
+import { NgFor, NgStyle, SlicePipe, NgIf, CommonModule } from '@angular/common';
 import { Component, Output, EventEmitter, OnInit, Input } from '@angular/core';
 import { Recipe } from '../../models/recipe.model';
 import { RouterLink } from '@angular/router';
@@ -6,10 +6,11 @@ import { RecipeService } from '../../services/recipe.service';
 import { PaginatorModule } from 'primeng/paginator';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from '../../services/user.service';
+import { first, map, Observable, take } from 'rxjs';
 
 @Component({
   selector: 'app-recipe-card',
-  imports: [NgFor, NgStyle, RouterLink, SlicePipe, PaginatorModule, NgIf],
+  imports: [NgFor, NgStyle, RouterLink, SlicePipe, PaginatorModule, NgIf, CommonModule],
   templateUrl: './recipe-card.component.html',
   styleUrl: './recipe-card.component.scss'
 })
@@ -22,9 +23,13 @@ export class RecipeCardComponent implements OnInit {
 
   page = 1;
   ricepesForPage = 4;
+
   userRole: any;
 
   titleRecipeToDelete: string;
+
+
+
 
   constructor(
     private modalService: NgbModal,
@@ -35,7 +40,31 @@ export class RecipeCardComponent implements OnInit {
   ngOnInit(): void {
 
     this.loadRecipes();
+    //this.loadRecipesAsync();
   }
+
+
+  // PipeAsync()
+  recipeList$: Observable<Recipe[]>;
+  totalRecipes: Recipe[];
+  loadRecipesAsync(){
+    //this.recipeList$ = this.recipeService.getRecipesAsync().pipe(map(res => this.totalRecipes= res));
+
+      this.recipeList$ = this.recipeService.getRecipesAsync()
+     .pipe(
+      map(res => res.filter(r => r.difficulty>0)),
+      map(res => this.totalRecipes = res)
+      );
+
+      const userData = JSON.parse(localStorage.getItem('userData'));
+      if (userData !== null) {
+        this.userService.userRole.subscribe({
+          next: res => this.userRole = res,
+        });
+      }
+    }
+
+  //----------------
 
   loadRecipes() {
     const userData = JSON.parse(localStorage.getItem('userData'));
@@ -44,6 +73,8 @@ export class RecipeCardComponent implements OnInit {
         next: res => this.userRole = res,
       });
     }
+
+
     this.recipeService.getRecipes().subscribe({
       next: (recipesResponse) => {
         this.recipeList = recipesResponse;
@@ -51,7 +82,17 @@ export class RecipeCardComponent implements OnInit {
       error: (error) => {
         console.log(error);
       }
-    })
+    });
+
+    // Per risparmiare memoria
+    /* this.recipeService.getRecipes().pipe(take(1), first()).subscribe({
+      next: (recipesResponse) => {
+        this.recipeList = recipesResponse;
+      },
+      error: (error) => {
+        console.log(error);
+      }
+    }); */
   }
 
   inviaTitolo(imageTitle: string){

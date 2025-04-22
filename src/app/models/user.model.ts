@@ -4,4 +4,8 @@ export interface User {
   password: string;
   accepted: boolean;
   role: string;
+  createdAt?: string;
+  updatedAt?: string;
+  deletedAt?: string;
+  lastLogin?: string;
 }

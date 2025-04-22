@@ -1,3 +1,4 @@
+import { UserService } from './../../services/user.service';
 import { NgIf } from '@angular/common';
 import { Component, DoCheck } from '@angular/core';
 import { RouterLink } from '@angular/router';
@@ -14,16 +15,24 @@ import { User } from '../../models/user.model';
 export class NavbarComponent implements DoCheck {
   user: User;
   isLogged: boolean = false;
+  userRole: any;
 
-  constructor(public authService: AuthService, private router: Router) { }
+  constructor(
+    public authService: AuthService,
+    private router: Router,
+    private userService: UserService
+  ) { }
 
   ngDoCheck(): void { // E' sempre in ascolto dei cambiamenti
     const userData = localStorage.getItem('userData');
     this.isLogged = userData !== null;
     if (this.isLogged) {
       this.user = JSON.parse(userData);
+      this.userService.userRole.subscribe({
+        next: res => this.userRole = res,
+      });
     } else {
-      //this.user.role = '';
+      this.userRole = '';
     }
   }
 

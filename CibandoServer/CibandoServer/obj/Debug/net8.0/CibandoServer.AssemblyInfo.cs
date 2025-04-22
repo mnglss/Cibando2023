@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CibandoServer")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+1659692ecfb44554b909982a977be7f0c536b323")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7c3ce8b40629ebeb1458b23aed2f4db1797f4c37")]
 [assembly: System.Reflection.AssemblyProductAttribute("CibandoServer")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CibandoServer")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

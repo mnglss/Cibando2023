@@ -17,11 +17,11 @@ export class UserService {
   private apiUrl = 'http://localhost:5137/api/User'; // Example API URL
   //private apiBaseUrl = '/api/User'; // Perche 'http://localhost:5137' viene preso dal proxy.conf.json
 
-  addUser(user: User): Observable<string> {
+   addUser(user: User): Observable<string> {
     var responce = this.httpClient.post<any>(`${this.apiUrl}/Signup`, user);
     return responce
   }
-  updateUser(user: any) {
+  /*updateUser(user: any) {
     return this.httpClient.put(`${this.apiUrl}/${user.id}`, user);
   }
   deleteUser(id: number) {
@@ -32,5 +32,10 @@ export class UserService {
   }
   getUser(id: number) {
     return this.httpClient.get(`${this.apiUrl}/${id}`);
+  } */
+
+  getUserProfile(email: string): Observable<User> {
+    var response = this.httpClient.post<User>(`${this.apiUrl}/Profile`, email);
+    return response;
   }
 }

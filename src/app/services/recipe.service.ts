@@ -19,6 +19,11 @@ export class RecipeService {
     return this.httpClient.get<Recipe[]>(this.apiUrl);
   }
 
+  getRecipesAsync() {
+    //return of (RECIPES);
+    return this.httpClient.get<Recipe[]>(this.apiUrl);
+  }
+
   getRecipe(id: number): Observable<Recipe | undefined>{
     //const recipe = RECIPES.find(r => r.id === id);
     //return of (recipe);
