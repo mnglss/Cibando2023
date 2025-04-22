@@ -1,8 +1,8 @@
 <div class="container-paginator" *ngIf="pageCaller!='home'">
   <p-paginator (onPageChange)="onPageChange($event)" [rows]="ricepesForPage" [totalRecords]="recipeList.length"  />
 </div>
-{{recipeList.length}}
-<div>
+<!-- {{recipeList.length}} -->
+<div *ngIf="recipeList">
   <div class="container-card" *ngFor="let item of recipeList | slice: (page * ricepesForPage) - ricepesForPage : page * ricepesForPage">
     <div class="card">
       <!--<div class="card-img-top" [ngStyle]="{'background-image': 'url('+item.image+')'}" (click)="inviaTitolo(item.title)"></div>-->
@@ -13,7 +13,7 @@
         <div class="link">
           <span>
             <a routerLink="detail/{{item.title}}/{{item.id}}" class="btn">Visualizza</a>&nbsp; <!-- Pulsante per visualizzare la ricetta -->
-            <button (click)="openDeleteModal(modalDeleteRecipe, item.id)" class="btn btn-primary" ngbAutofocus-Azione><i class="pi pi-trash"></i></button> <!-- Aprire una modale con il click del pulsante  -->
+            <button (click)="openDeleteModal(modalDeleteRecipe, item.id)" class="" ngbAutofocus-Azione *ngIf="userRole=='Admin'"><i class="pi pi-trash"></i></button> <!-- Aprire una modale con il click del pulsante  -->
           </span>
       </div>
       </div>

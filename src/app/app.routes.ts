@@ -4,6 +4,7 @@ import { RecipeComponent } from './components/recipes/recipes.component';
 import { DetailComponent } from './components/recipes/detail/detail.component';
 import { RecipesListComponent } from './components/recipes/recipes-list/recipes-list.component';
 import { RegistrationComponent } from './components/user/registration/registration.component';
+import { LoginComponent } from './components/user/login/login.component';
 
 export const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'}, // Questa riga è obbligatoria in questa posizione
@@ -14,5 +15,6 @@ export const routes: Routes = [
     ]
   },
   { path: 'registration', component: RegistrationComponent },
+  { path: 'login', component: LoginComponent },
   { path: '**', redirectTo: '' } // Questa riga è obbligatoria in questa posizione per riportare sempre alla home page
 ];

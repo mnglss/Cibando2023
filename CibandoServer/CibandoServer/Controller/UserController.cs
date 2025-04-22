@@ -17,12 +17,12 @@ namespace CibandoServer.Controller
       _userService = userService;
     }
 
-    [HttpGet("Login")]
+    [HttpPost("Login")]
     [ProducesResponseType(type: typeof(UserDto), statusCode: 200)]
     [ProducesResponseType(typeof(bool), 200)]
-    public async Task<ActionResult> Login([FromQuery, Required] string email, [FromQuery, Required] string Password)
+    public async Task<ActionResult> Login([FromBody, Required] UserLoginRequest userLogin)
     {
-      var user = await _userService.GetUserAsync(email, Password);
+      var user = await _userService.GetUserAsync(userLogin.User.Email, userLogin.User.Password);
       if (user == null)
         return NotFound(new { Resul = "User not found." });
       var userDto = new UserDto { Name = user.Name, Email = user.Email, Password = user.Password, Role = user.Role, Accepted = user.Accepted };

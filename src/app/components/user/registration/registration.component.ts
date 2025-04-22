@@ -43,7 +43,7 @@ export class RegistrationComponent {
       role: 'user'
     };
 
-    /* this.userService.addUser(addUser).subscribe({
+    this.userService.addUser(addUser).subscribe({
       next: (response) => {
         console.log(response);
 
@@ -56,7 +56,7 @@ export class RegistrationComponent {
         console.error(error);
         alert('Errore durante la registrazione: '+error.message); // Mostra un messaggio di errore all'utente
       }
-    }); */
+    });
 
 
   }

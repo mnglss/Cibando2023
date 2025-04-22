@@ -1,10 +1,11 @@
 import { NgFor, NgStyle, SlicePipe, NgIf } from '@angular/common';
 import { Component, Output, EventEmitter, OnInit, Input } from '@angular/core';
 import { Recipe } from '../../models/recipe.model';
-import { RouterLink, Router, ActivatedRoute, RouteReuseStrategy, provideRouter } from '@angular/router';
+import { RouterLink } from '@angular/router';
 import { RecipeService } from '../../services/recipe.service';
 import { PaginatorModule } from 'primeng/paginator';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-recipe-card',
@@ -21,22 +22,28 @@ export class RecipeCardComponent implements OnInit {
 
   page = 1;
   ricepesForPage = 4;
+  userRole: any;
 
   titleRecipeToDelete: string;
 
   constructor(
     private modalService: NgbModal,
     private recipeService: RecipeService,
-    private router: Router,
-    private route: ActivatedRoute,
-    private routeStrategy: RouteReuseStrategy) {}
+    private userService: UserService
+  ) {}
 
   ngOnInit(): void {
-    this.loadRecipes();
 
+    this.loadRecipes();
   }
 
   loadRecipes() {
+    const userData = JSON.parse(localStorage.getItem('userData'));
+    if (userData !== null) {
+      this.userService.userRole.subscribe({
+        next: res => this.userRole = res,
+      });
+    }
     this.recipeService.getRecipes().subscribe({
       next: (recipesResponse) => {
         this.recipeList = recipesResponse;
@@ -78,10 +85,7 @@ export class RecipeCardComponent implements OnInit {
       this.recipeService.deleteRecipe(idRecipe).subscribe({
         next: (response) => {
           console.log(response);
-          // this.loadRecipes();
-          //location.reload(); // Ricarica la pagina per vedere l'aggiornamento della lista
-          //this.resetPage(); // Ricarica la pagina per vedere l'aggiornamento della lista
-          this.loadRecipes(); // Ricarica la lista delle ricette
+          this.loadRecipes();
         },
         error: (error) => {
           console.log(error);
@@ -94,14 +98,6 @@ export class RecipeCardComponent implements OnInit {
     });
   }
 
-  resetPage() {
-
-    this.routeStrategy.shouldReuseRoute = () => false;
-    let currentUrl = this.router.url;
-    this.router.navigateByUrl('/', {skipLocationChange: true}).then(() => {
-    this.router.navigate([currentUrl]); // Naviga di nuovo alla stessa route per forzare il caricamento)
-    });
-  }
 
 
 }

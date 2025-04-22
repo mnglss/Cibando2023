@@ -15,7 +15,12 @@
         <li class="nav-item">
           <a class="nav-link"><i class="pi pi-envelope"></i> Contatti</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="!authService.isLogged()">
+          <a class="nav-link" routerLink="login"><i class="pi pi-sign-in"></i> Accedi</a>
+        </li>
+        <li class="nav-item" *ngIf="authService.isLogged()"><span>Ciao {{user.name}} - <a class="nav-link" (click)="logout()"><i class="pi pi-sign-out"></i> Esci</a></span>
+        </li>
+        <li class="nav-item" *ngIf="!authService.isLogged()">
           <a class="nav-link" routerLink="registration"><i class="pi pi-user"></i> Registrati</a>
         </li>
       </ul>

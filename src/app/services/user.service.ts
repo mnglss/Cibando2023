@@ -10,6 +10,7 @@ export class UserService {
 
   //datiUtente = new Subject(); // Sincrono
   datiUtente = new ReplaySubject(); // Asincrono
+  userRole = new ReplaySubject(); // Asincrono
 
   constructor(private httpClient: HttpClient) { }
 
