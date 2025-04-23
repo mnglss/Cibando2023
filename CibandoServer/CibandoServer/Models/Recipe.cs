@@ -6,8 +6,8 @@ namespace CibandoServer.Models
     public required string Title { get; set; }
     public string Description { get; set; } = string.Empty;
     public int Difficulty { get; set; }
-    public DateOnly CreatedAt { get; set; } = new DateOnly();
+    public DateOnly CreatedAt { get; set; } = DateOnly.FromDateTime(DateTime.Now);
     public string ImageUrl { get; set; } = string.Empty;
-    public bool IsPiblished { get; set; }
+    public bool IsPublished { get; set; }
   }
 }

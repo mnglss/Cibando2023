@@ -35,4 +35,8 @@ export class RecipeService {
     //return of (RECIPES.filter(r => r.id !== id));
     return this.httpClient.delete<void>(`${this.apiUrl}/${id}`);
   }
+
+  createRecipe(recipe: Recipe): Observable<any>{
+    return this.httpClient.post<any>(this.apiUrl, {recipe});
+  }
 }

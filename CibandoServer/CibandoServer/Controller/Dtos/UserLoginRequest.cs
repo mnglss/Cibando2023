@@ -2,9 +2,9 @@ namespace CibandoServer.Controller.Dtos
 {
   public class UserLoginRequest
   {
-    public required UserRequest User { get; set; }
+    public required LoginRequest User { get; set; }
 
-    public class UserRequest
+    public class LoginRequest
     {
     public required string Email { get; set; }
     public required string Password { get; set; }

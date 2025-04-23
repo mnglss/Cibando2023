@@ -35,7 +35,10 @@ export class UserService {
   } */
 
   getUserProfile(email: string): Observable<User> {
-    var response = this.httpClient.post<User>(`${this.apiUrl}/Profile`, email);
+    const user = {
+      email: email
+    };
+    var response = this.httpClient.post<User>(`${this.apiUrl}/Profile`, {user});
     return response;
   }
 }

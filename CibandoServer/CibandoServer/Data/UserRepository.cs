@@ -1,5 +1,6 @@
 using CibandoServer.Core.Interfaces;
 using CibandoServer.Models;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
 namespace CibandoServer.Data
@@ -41,12 +42,26 @@ namespace CibandoServer.Data
     public async Task<User?> GetUserAsync(string email, string Password)
     {
       using var dbContext = _dbContextFactory.CreateDbContextAsync();
-      return await dbContext.Users.FirstOrDefaultAsync(u => u.Email == email && u.Password == Password);
+      var user = await dbContext.Users.FirstOrDefaultAsync(u => u.Email == email && u.Password == Password);
+      if (user is not null)
+      {
+        user.LastLogin = DateOnly.FromDateTime(DateTime.UtcNow); // Update the last login time
+        await UpdateUserAsync(user);// Update the user in the database
+      }
+      return user;
     }
 
-    public Task UpdateUserAsync(User user)
+    public Task<User?> GetUserProfileAsync(string email)
     {
-      throw new NotImplementedException();
+      var dbContext = _dbContextFactory.CreateDbContextAsync();
+      return dbContext.Users.FirstOrDefaultAsync(u => u.Email == email);
+    }
+
+    public async Task UpdateUserAsync(User user)
+    {
+      var dbContext = _dbContextFactory.CreateDbContextAsync();
+      dbContext.Users.Update(user);
+      await dbContext.SaveChangesAsync();
     }
   }
 }

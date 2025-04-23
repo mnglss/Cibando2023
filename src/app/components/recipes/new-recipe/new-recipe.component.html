@@ -1,0 +1,24 @@
+<h2>Inserimento nuova ricetta</h2>
+<div class="container-fluid">
+  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div class="mb-3">
+      <label for="title" class="form-label">Titolo</label>
+      <textarea type="text" class="form-control" id="title" formControlName="title" required rows="1"></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="description" class="form-label">Descrizione</label>
+      <textarea class="form-control" id="description" formControlName="description" rows="3"></textarea>
+    </div>
+    <div class="mb-3">
+      <label for="imageUrl" class="form-label">Link immagine</label>
+      <input class="form-control" id="imageUrl" formControlName="imageUrl" />
+    </div>
+    <div class="mb-3">
+      <label for="difficulty" class="form-label">Difficoltà</label>
+      <input class="form-control" id="difficulty" type="number" formControlName="difficulty" />
+     <!--  <p-select formControlName="difficulty" [options]="difficulties" optionLabel="difficulty" placeholder="Select ..." class="w-full md:w-56" /> -->
+    </div>
+    <button type="submit" class="btn btn-primary">Salva Ricetta</button>
+  </form>
+</div>
+<p-toast position="center" ></p-toast>

@@ -1,3 +1,4 @@
+using CibandoServer.Controller.Dtos;
 using CibandoServer.Core.Interfaces;
 using CibandoServer.Models;
 using Microsoft.AspNetCore.Mvc;
@@ -40,11 +41,28 @@ namespace CibandoServer.Controller
 
     // POST: api/recipe
     [HttpPost]
-    public async Task<IActionResult> AddRecipe([FromBody] Recipe recipe)
+    [ProducesResponseType(typeof(string), StatusCodes.Status201Created)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    public async Task<IActionResult> AddRecipe([FromBody] RecipeRequest newRecipe)
     {
-      // Validate the recipe object here if needed
-      await _recipeService.AddAsync(recipe);
-      return Ok("Recipe Created Successfully.");
+      try{
+        // Validate the recipe object here if needed
+        var recipe = new Recipe
+        {
+          Title = newRecipe.Recipe.Title,
+          Description = newRecipe.Recipe.Description,
+          Difficulty = newRecipe.Recipe.Difficulty,
+          ImageUrl = newRecipe.Recipe.ImageUrl,
+          IsPublished = newRecipe.Recipe.IsPublished,
+          CreatedAt = DateOnly.FromDateTime(DateTime.Now)
+        };
+        await _recipeService.AddAsync(recipe);
+        return Created();
+      }
+      catch (Exception ex)
+      {
+        return BadRequest(ex.Message);
+      }
     }
 
     // PUT: api/recipe/{id}

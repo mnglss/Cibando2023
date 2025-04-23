@@ -10,5 +10,6 @@ namespace CibandoServer.Core.Interfaces
     Task<bool> AddUserAsync(User user);
     Task UpdateUserAsync(User user);
     Task DeleteUserAsync(Guid userId);
+    Task<User?> GetUserProfileAsync(string email);
   }
 }

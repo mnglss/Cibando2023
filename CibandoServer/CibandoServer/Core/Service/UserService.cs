@@ -41,6 +41,12 @@ namespace CibandoServer.Core.Service
       return await _userRepository.GetUserAsync(email, Password);
     }
 
+    public async Task<User?> GetUserProfileAsync(string email)
+    {
+      var user = await _userRepository.GetUserProfileAsync(email);
+      return user;
+    }
+
     public async Task<bool> UpdateUserAsync(User user)
     {
       throw new NotImplementedException();

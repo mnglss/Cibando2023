@@ -3,6 +3,9 @@
   <li>Nome: {{user.name}}</li>
   <li>E-mail: {{user.email}}</li>
   <li>Ruolo: {{user.role}}</li>
-  <li>Data di registrazione: {{user.createdAt}}</li>
+  <li>Data di registrazione: {{user.createdAt | date}}</li>
   <li>Ultimo accesso: {{user.lastLogin}}</li>
+  <li *ngIf="user.role=='Admin'">Registrato il: {{user.createdAt}}</li>
+  <li *ngIf="user.role=='Admin'">Aggiornato il: {{user.updatedAt}}</li>
+  <li >moment: {{data}}</li>
 </ul>

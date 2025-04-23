@@ -15,6 +15,7 @@ namespace CibandoServer.Core.Services
 
     public async Task AddAsync(Recipe recipe)
     {
+      recipe.CreatedAt = DateOnly.FromDateTime(DateTime.Now);
       await _repository.AddAsync(recipe);
     }
 
