@@ -9,24 +9,36 @@
         </div>
         <div class="mb-3">
           <label for="description" class="form-label">Descrizione</label>
-          <textarea class="form-control" id="description" formControlName="description" rows="3"></textarea>
-          <!-- <ckeditor [editor]="editor" data="" formControlName="description" [config]="editorConfig"></ckeditor> -->
+          <!-- <textarea class="form-control" id="description" formControlName="description" rows="3"></textarea> -->
+          <!-- <ckeditor [editor]="editor" formControlName="description" [config]="editorConfig"></ckeditor> -->
+          <div class="NgxEditor__Wrapper">
+            <ngx-editor-menu [editor]="editor" [toolbar]="toolbar"> </ngx-editor-menu>
+            <ngx-editor [editor]="editor" formControlName="description" [disabled]="false" [placeholder]="'Type here...'"></ngx-editor>
+          </div>
         </div>
         <div class="mb-3">
           <label for="imageUrl" class="form-label">Link immagine</label>
           <input class="form-control" id="imageUrl" formControlName="imageUrl" />
         </div>
         <div class="mb-3">
-          <label for="difficulty" class="form-label">Difficoltà</label>
+          <label for="difficulty" class="form-label">Difficoltà</label>&nbsp;
           <!-- <input class="form-control" id="difficulty" type="number" formControlName="difficulty" /> -->
-          <p-select formControlName="difficulty" [options]="difficulties"  placeholder="Select ..." class="w-full md:w-56" />
+          <p-select formControlName="difficulty" [options]="difficulties" placeholder="Select ..." (onChange)="onDifficultyChange(form.controls.difficulty.value)" />
         </div>
-        <button type="submit" class="btn btn-primary">Salva Ricetta</button>
+        <button type="submit" class="btn btn-primary" [disabled]="!form.valid">Salva Ricetta</button>
       </form>
     </div>
     <div class="col-md-6">
-      <h3>{{form.controls.title.value}}</h3>
+      <h2>Titolo</h2>
+      <h4>{{form.controls.title.value}}</h4>
       <p-image [src]="form.controls.imageUrl.value" alt="Image" [preview]="true" width="100%"></p-image>
+      <div>
+        <h4>Descrizione</h4>
+        <div [innerHTML]="form.controls.description.value"></div>
+        <p><b>Difficoltà</b>: <span>
+          <img *ngFor="let item of difficultiesStar" src="../../../../assets/images/Difficolta_1.png" class="difficulty" />
+        </span></p>
+      </div>
     </div>
   </div>
 </div>
