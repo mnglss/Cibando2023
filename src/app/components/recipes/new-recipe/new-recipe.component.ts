@@ -5,27 +5,28 @@ import moment from 'moment';
 import { RecipeService } from '../../../services/recipe.service';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api'; // Importa il servizio per le notifiche
-/* import { Select } from 'primeng/select'; */
+import { Select, SelectModule } from 'primeng/select';
 import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import * as ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import { ImageModule } from 'primeng/image';
 
 
 @Component({
   selector: 'app-new-recipe',
-  imports: [FormsModule, ReactiveFormsModule, ToastModule, CKEditorModule],
+  imports: [FormsModule, ReactiveFormsModule, ToastModule, CKEditorModule, SelectModule, ImageModule],
   templateUrl: './new-recipe.component.html',
   styleUrl: './new-recipe.component.scss',
   providers: [MessageService]
 })
 export class NewRecipeComponent {
-  //difficulties = [1,2,3,4,5];
-  difficulties = [
+  difficulties = [1,2,3,4,5];
+  /* difficulties = [
     { label: '1', value: 1 },
     { label: '2', value: 2 },
     { label: '3', value: 3 },
     { label: '4', value: 4 },
     { label: '5', value: 5 }
-  ];
+  ]; */
 
   editor = ClassicEditor;
   editorConfig = {
@@ -58,7 +59,7 @@ export class NewRecipeComponent {
     title: new FormControl('', Validators.required),
     description: new FormControl('', [Validators.required]),
     imageUrl: new FormControl('', [Validators.required]),
-    difficulty: new FormControl(this.difficulties, Validators.required)
+    difficulty: new FormControl('', Validators.required)
   });
 
 

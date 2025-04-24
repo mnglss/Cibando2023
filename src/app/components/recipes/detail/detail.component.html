@@ -1,3 +1,4 @@
+
 <div *ngIf="recipeDetail">
   <div class="recipeDetail">
     <img src="{{recipeDetail.imageUrl}}">
@@ -6,7 +7,10 @@
       <p>
         {{recipeDetail.description}}
       </p>
-      <p><b>Difficoltà</b>: <span><img [src]="difficultyPathImage+recipeDetail.difficulty+'.png'" class="difficulty" /></span></p>
+      <!-- <p><b>Difficoltà</b>: <span><img [src]="difficultyPathImage+recipeDetail.difficulty+'.png'" class="difficulty" /></span></p> -->
+      <p><b>Difficoltà</b>: <span>
+        <img *ngFor="let item of difficulties" src="../../../../assets/images/Difficolta_1.png" class="difficulty" />
+      </span></p>
       <p><b>Data</b>: {{recipeDetail.createdAt}}</p>
     </div>
   </div>
