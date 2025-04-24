@@ -7,6 +7,7 @@ import { PaginatorModule } from 'primeng/paginator';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { UserService } from '../../services/user.service';
 import { first, map, Observable, take } from 'rxjs';
+import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-recipe-card',
@@ -34,7 +35,8 @@ export class RecipeCardComponent implements OnInit {
   constructor(
     private modalService: NgbModal,
     private recipeService: RecipeService,
-    private userService: UserService
+    private userService: UserService,
+    private sanitizer: DomSanitizer
   ) {}
 
   ngOnInit(): void {
@@ -104,13 +106,22 @@ export class RecipeCardComponent implements OnInit {
     this.details.emit(this.recipeList.find(r=>r.id===id));
   }
 
-  sliceDescription(descriptionToSlice: string): number{
+  slicePosition(descriptionToSlice: string): number{
     var maxLength = 240;
     if (descriptionToSlice.length < maxLength)
       return maxLength;
-    let lastBlankPosition = descriptionToSlice.indexOf(' ', maxLength);
+    let lastBlankPosition = descriptionToSlice.lastIndexOf(' ', maxLength);
     return lastBlankPosition;
   }
+
+  sliceDescription(descriptionToSlice: string): string{
+    var maxLength = 240;
+    if (descriptionToSlice.length <= maxLength)
+      return descriptionToSlice.slice(0, maxLength);
+    let lastBlankPosition = descriptionToSlice.lastIndexOf(' ', maxLength);
+    return descriptionToSlice.slice(0, lastBlankPosition) + '...';
+  }
+
 
   onPageChange(event){
     event.page = event.page+1;
@@ -140,5 +151,12 @@ export class RecipeCardComponent implements OnInit {
   }
 
 
+
+  getSafeHtml(html: string): SafeHtml {
+    const htmlText = this.sliceDescription(html);
+    const sanitizedHtml = html.replace(/<[^>]+>/g, ''); // Rimuovi i tag HTML
+    const sanitizedHtmlWithLineBreaks = sanitizedHtml.replace(/\n/g, '<br>'); // Sostituisci i ritorni a capo con <br>
+    return this.sanitizer.bypassSecurityTrustHtml(html);
+  }
 
 }
