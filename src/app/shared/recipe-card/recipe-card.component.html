@@ -9,8 +9,8 @@
       <div class="card-img-top" [ngStyle]="{'background-image': 'url('+item.imageUrl+')'}" (click)="sendDetails(item.id)"></div>
       <div class="card-body">
         <h5 class="card-title">{{item.title}}</h5>
-        <p class="card-text">{{item.description | slice: 0:slicePosition(item.description)}} ...</p>
-        <span [innerHTML]="getSafeHtml(item.description)"></span>
+        <!-- <p class="card-text">{{item.description | slice: 0:slicePosition(item.description)}} ...</p> -->
+        <p class="card-text" [innerHTML]="getSafeHtml(sliceDescription(item.description))"></p>
         <div class="link">
           <span>
             <a routerLink="detail/{{item.title}}/{{item.id}}" class="btn">Visualizza</a>&nbsp; <!-- Pulsante per visualizzare la ricetta -->

@@ -76,7 +76,6 @@ export class RecipeCardComponent implements OnInit {
       });
     }
 
-
     this.recipeService.getRecipes().subscribe({
       next: (recipesResponse) => {
         this.recipeList = recipesResponse;
